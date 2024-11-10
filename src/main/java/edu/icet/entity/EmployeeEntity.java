@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "employee")
-public class Employee {
+public class EmployeeEntity {
     @Id
     @Column(name="employee_id", length = 45)
     @GeneratedValue(strategy = GenerationType.AUTO)
