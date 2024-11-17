@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/instructor")
 @RequiredArgsConstructor
+@CrossOrigin
 public class InstructorController {
     @Autowired
     private final InstructorService instructorService;

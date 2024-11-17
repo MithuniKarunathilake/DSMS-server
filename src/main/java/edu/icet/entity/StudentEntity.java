@@ -21,6 +21,10 @@ public class StudentEntity{
     private String password;
     private LocalDate dob;
     private String contactNumber;
+    @Lob
+    @Column(length = 1000000,name = "image")
+    private byte[] picture;
+
     //private UserRole userRole;
 
 //    @Override
