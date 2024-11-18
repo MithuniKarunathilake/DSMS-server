@@ -1,7 +1,5 @@
 package edu.icet.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +16,6 @@ public class Student {
     private String password;
     private LocalDate dob;
     private String contactNumber;
-    @Lob
-    @Column(name = "image", columnDefinition = "LONGBLOB",length = 1000000)
-    private byte[] image;
+    private String imageName;
+    private String imagePath;
 }

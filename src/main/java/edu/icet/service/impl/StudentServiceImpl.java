@@ -9,7 +9,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,7 @@ public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
     private final ModelMapper mapper;
+    private static final String URL = "C:/Users/Admin/Desktop/sample/Sample/src/main/resources/images";
     @Override
     public List<Student> getAll() {
         List<Student> studentArrayList = new ArrayList<>();
@@ -31,14 +35,18 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void addStudent(Student student) {
-        studentRepository.save(mapper.map(student, StudentEntity.class));
+    public void addStudent(Student student, MultipartFile file) throws IOException {
+        String filePath = URL + file.getOriginalFilename();
+        StudentEntity entity = mapper.map(student, StudentEntity.class);
+        entity.setImageName(file.getOriginalFilename());
+        entity.setImagePath(filePath);
+        studentRepository.save(entity);
+        file.transferTo(new File(filePath));
     }
 
     @Override
     public void deleteStudentById(Integer id) {
         studentRepository.deleteById(id);
-
     }
 
     @Override
@@ -50,5 +58,4 @@ public class StudentServiceImpl implements StudentService {
     public void updateStudentById(Student student) {
         studentRepository.save(mapper.map(student, StudentEntity.class));
     }
-
 }

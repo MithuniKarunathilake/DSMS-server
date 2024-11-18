@@ -21,19 +21,6 @@ public class StudentEntity{
     private String password;
     private LocalDate dob;
     private String contactNumber;
-    @Lob
-    @Column(length = 1000000,name = "image")
-    private byte[] picture;
-
-    //private UserRole userRole;
-
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return List.of(new SimpleGrantedAuthority(userRole.name()));
-//    }
-//
-//    @Override
-//    public String getUsername() {
-//        return email;
-//    }
+    private String imageName;
+    private String imagePath;
 }
