@@ -23,4 +23,6 @@ public class InstructorEntity {
     private String contactNumber;
     private Integer experiencedYears;
     private Boolean availability;
+    private String imageName;
+    private String imagePath;
 }
